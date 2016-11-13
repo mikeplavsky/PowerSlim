@@ -10,4 +10,6 @@ RUN mkdir binaries && \
     apt-get update && \
     chmod 777 /binaries/fitnesse-standalone.jar
 
+ADD AWSPowerShell.NetCore /opt/microsoft/powershell/6.0.0-alpha.12/Modules/AWSPowerShell.NetCore
+
 CMD ["java","-jar","/binaries/fitnesse-standalone.jar", "-v", "-p", "8081"]

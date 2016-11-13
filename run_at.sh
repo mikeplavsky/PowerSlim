@@ -1,6 +1,6 @@
 ./build.sh
 
-NAME=powerslim_fitnesse
+NAME=powerslim
 
 docker rm -f $NAME
 docker run -d \
