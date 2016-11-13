@@ -1,0 +1,11 @@
+./build.sh
+
+NAME=powerslim_fitnesse
+
+docker rm -f $NAME
+docker run -d \
+    -v $(pwd):/PowerSlim \
+    --name=$NAME \
+    -p 8082:8081 \
+    -w /PowerSlim \
+   powerslim 
