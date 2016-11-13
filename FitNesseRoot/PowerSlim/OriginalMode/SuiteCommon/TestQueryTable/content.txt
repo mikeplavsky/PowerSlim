@@ -1,6 +1,6 @@
 !|Query:Local|get-host|
 |Name        |Version |
-|ConsoleHost |=~/${HOST_VERSION}/|
+|ConsoleHost |=~/6.0.0/|
 !* Empty dictionary
 !|script|
 |eval|$list= New-Object "system.collections.generic.dictionary[string,object]";|

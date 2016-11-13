@@ -13,7 +13,7 @@
 |file1.txt|
 |file2.txt|
 
-|Query:Local|ls file*.txt !-|-! select Name|
+|Query:Local|ls !-|-! select Name|
 |Name|
 |file1.txt|
 |file2.txt|
