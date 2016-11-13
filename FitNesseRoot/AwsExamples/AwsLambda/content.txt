@@ -1,0 +1,15 @@
+-!|script|
+|eval|!-$event = @{key1="A";key2="B";key3="C"} | ConvertTo-Json -!|
+|eval|$res=Invoke-LMFunction hello-powerslim $event|
+
+!|Query:Local|$res|
+|StatusCode|FunctionError|
+|200|null |
+
+-!|script|
+|eval|$answer = [System.IO.StreamReader]::new($res.Payload).ReadToEnd()|
+|show|eval|$answer !-|-! ConvertFrom-Json|
+
+|Query:Local|!-$answer | ConvertFrom-Json | ConvertFrom-Json -!|
+|res|
+|A|

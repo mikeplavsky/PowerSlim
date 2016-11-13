@@ -1,0 +1,4 @@
+|Subset Query:Local|!-Get-Command | ?{$_.Name -like "*S3*"}-!|
+|Name|
+|Get-S3Version|
+
