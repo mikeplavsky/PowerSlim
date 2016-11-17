@@ -41,4 +41,10 @@ RUN mkdir binaries && \
 
 CMD ["java","-jar","/binaries/fitnesse-standalone.jar", "-v", "-p", "8081"]
 
-RUN powershell -NonInteractive -command "Install-Package -Force -Name AWSPowerShell.NetCore -Source https://www.powershellgallery.com/api/v2/ -ProviderName NuGet -ExcludeVersion -Destination /opt/microsoft/powershell/$POWERSHELL_VERSION/Modules"
+RUN powershell -NonInteractive -command \
+    "Install-Package -Force -Name \
+    AWSPowerShell.NetCore \
+    -Source https://www.powershellgallery.com/api/v2/ \
+    -ProviderName NuGet \ 
+    -ExcludeVersion -Destination \
+    /opt/microsoft/powershell/$POWERSHELL_VERSION/Modules"
