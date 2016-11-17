@@ -23,7 +23,8 @@ RUN apt-get update \
         git \
     && rm -rf /var/lib/apt/lists/*
 
-ARG POWERSHELL_PACKAGE=powershell_6.0.0-alpha.12-70-gce26bca-1ubuntu1.16.04.1_amd64.deb
+ENV POWERSHELL_VERSION=6.0.0-alpha.12-70-gce26bca
+ENV POWERSHELL_PACKAGE=powershell_$POWERSHELL_VERSION-1ubuntu1.16.04.1_amd64.deb
 
 ADD $POWERSHELL_PACKAGE /$POWERSHELL_PACKAGE
 RUN dpkg -i $POWERSHELL_PACKAGE 
@@ -39,3 +40,5 @@ RUN mkdir binaries && \
     chmod 777 /binaries/fitnesse-standalone.jar
 
 CMD ["java","-jar","/binaries/fitnesse-standalone.jar", "-v", "-p", "8081"]
+
+RUN powershell -NonInteractive -command "Install-Package -Force -Name AWSPowerShell.NetCore -Source https://www.powershellgallery.com/api/v2/ -ProviderName NuGet -ExcludeVersion -Destination /opt/microsoft/powershell/$POWERSHELL_VERSION/Modules"
