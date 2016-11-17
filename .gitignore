@@ -1,3 +1,4 @@
+*.deb
 AWSPowerShell.NetCore
 ps-log.txt
 ps-error.txt
