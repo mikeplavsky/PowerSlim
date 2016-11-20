@@ -344,7 +344,7 @@ function Set-Script($s, $fmt){
   {
 	$s = $s -replace '</?pre>' #workaround fitnesse strange behavior
   }
-  if($slimsymbols.Count){$slimsymbols.Keys | Sort Length -Descending | ? {!($s -cmatch "\`$$_\s*=")} | ? {$slimsymbols[$_] -is [string] } | % {$s=$s -creplace "\`$$_",$slimsymbols[$_] }}
+  if($slimsymbols.Count){$slimsymbols.Keys | Sort-Object Length -Descending | ? {!($s -cmatch "\`$$_\s*=")} | ? {$slimsymbols[$_] -is [string] } | % {$s=$s -creplace "\`$$_",$slimsymbols[$_] }}
   if($slimsymbols.Count){$slimsymbols.Keys | % { Set-Variable -Name $_ -Value $slimsymbols[$_] -Scope Global}}
   $s = $fmt -f $s
   if($s.StartsWith('function',$true,$null)){Set-Variable -Name Script__ -Value ($s -replace 'function\s+(.+)(?=\()','function script:$1') -Scope Global}
@@ -657,7 +657,6 @@ function Run-SlimServer($ps_server){
   send_slim_version($ps_fitnesse_stream)
   $ps_fitnesse_client.Client.Poll(-1, [System.Net.Sockets.SelectMode]::SelectRead)
   while("bye" -ne (process_message($ps_fitnesse_stream))){};
-  $ps_fitnesse_client.Close()
 
 }
 
