@@ -1,3 +1,5 @@
+#this is what i run PowerSlim.OriginalMode.SuiteCommon
+
 NAME=powerslim
 
 docker rm -f $NAME
